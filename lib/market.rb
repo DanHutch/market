@@ -29,4 +29,17 @@ class Market
     end
   end
 
+#if there is time I will refactor this method
+  def sorted_item_list
+    list = []
+    @vendors.each do |vendor|
+      vendor.inventory.keys.each do |item|
+        if list.include?(item) == false
+          list << item
+        end
+      end
+    end
+    return list.sort
+  end
+
 end
