@@ -40,4 +40,19 @@ class VendorTest < Minitest::Test
     assert_equal(expected, vendor.inventory)
   end
 
+  def test_a_vendor_can_sell_an_item
+    vendor = Vendor.new("Rocky Mountain Fresh")
+    vendor.stock("Peaches", 30)
+    vendor.stock("Plums", 40)
+    expected = 0
+    actual = vendor.sell("Onions", 20)
+    assert_equal(expected, actual)
+    expected = "satisfied customer"
+    actual = vendor.sell("Peaches", 20)
+    assert_equal(expected, actual)
+    assert_equal(10, vendor.check_stock("Peaches"))
+    actual = vendor.sell("Plums", 45)
+    assert_equal(40, actual)
+  end
+
 end
