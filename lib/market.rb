@@ -29,4 +29,32 @@ class Market
     end
   end
 
+# if there is time...
+# I will try to refactor the following two methods!
+
+
+  def sorted_item_list
+    list = []
+    @vendors.each do |vendor|
+      vendor.inventory.keys.each do |item|
+        list << item if list.include?(item) == false
+      end
+    end
+    return list.sort
+  end
+
+  def total_inventory
+    totals = {}
+    @vendors.each do |vendor|
+      vendor.inventory.each do |key, value|
+        if totals[key]
+          totals[key] += value
+        else
+          totals[key] = value
+        end
+      end
+    end
+    return totals
+  end
+
 end
