@@ -30,7 +30,7 @@ class Market
   end
 
 # if there is time...
-# I will try to refactor the following two methods!
+# I will try to refactor the following methods!
 
 
   def sorted_item_list
@@ -55,6 +55,22 @@ class Market
       end
     end
     return totals
+  end
+
+  def sell(item, quantity)
+    product = total_inventory[item]
+    if product == false
+      false
+    elsif product && product < quantity
+      false
+    # elsif product && product >= quantity
+    #   @vendors.reduce(quantity) do |remaining, vendor|
+    #     while remaining > 0 do
+    #       remaining -= vendor.sell(item, remaining)
+    #     end
+    #   end
+    #   true
+    end
   end
 
 end

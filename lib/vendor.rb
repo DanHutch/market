@@ -27,4 +27,17 @@ class Vendor
     end
   end
 
+  def sell(item, quantity)
+    if @inventory[item] == nil
+      return 0
+    elsif @inventory[item] && @inventory[item] >= quantity
+      @inventory[item] -= quantity
+      return "satisfied customer"
+    elsif @inventory[item] && @inventory[item] < quantity
+      available = @inventory[item]
+      @inventory[item] -= available
+      return available
+    end
+  end
+
 end
